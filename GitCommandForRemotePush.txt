@@ -1,0 +1,189 @@
+[train@node70 main]$ cd ..
+[train@node70 src]$ cd home/
+bash: cd: home/: No such file or directory
+[train@node70 src]$ cd ..
+[train@node70 Calculator-Addition]$ cd ..
+[train@node70 Desktop]$ cd ..
+[train@node70 ~]$ mkdir AdditionExample
+[train@node70 ~]$ cd AdditionExample
+[train@node70 AdditionExample]$ git clone https://github.com/231mayur/Calculator.git
+Cloning into 'Calculator'...
+remote: Enumerating objects: 43, done.
+remote: Counting objects: 100% (43/43), done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 43 (delta 0), reused 43 (delta 0), pack-reused 0
+Unpacking objects: 100% (43/43), done.
+[train@node70 AdditionExample]$ ls
+Calculator
+[train@node70 AdditionExample]$ cd Calculator/
+[train@node70 Calculator]$ ls
+pom.xml  src  target
+[train@node70 Calculator]$ cd src
+[train@node70 src]$ ls
+main  test
+[train@node70 src]$ tree src
+src [error opening dir]
+
+0 directories, 0 files
+[train@node70 src]$ tree 
+.
+├── main
+│   └── java
+│       └── org
+│           └── amdocs
+│               └── lab2
+│                   └── Calculator
+│                       └── App.java
+└── test
+    └── java
+        └── org
+            └── amdocs
+                └── lab2
+                    └── Calculator
+                        └── AppTest.java
+
+12 directories, 2 files
+[train@node70 src]$ cd src/main/java/org/amdocs/lab2/Calculator/
+bash: cd: src/main/java/org/amdocs/lab2/Calculator/: No such file or directory
+[train@node70 src]$ cd src/main/java/org/amdocs/lab2/Calculator
+bash: cd: src/main/java/org/amdocs/lab2/Calculator: No such file or directory
+[train@node70 src]$ cd main/java/org/amdocs/lab2/Calculator
+[train@node70 Calculator]$ gedit Addition.java
+[train@node70 Calculator]$ ls
+Addition.java  App.java
+[train@node70 Calculator]$ cd src/test/java/org/amdocs/lab2/Calculator
+bash: cd: src/test/java/org/amdocs/lab2/Calculator: No such file or directory
+[train@node70 Calculator]$ cd test/java/org/amdocs/lab2/Calculator
+bash: cd: test/java/org/amdocs/lab2/Calculator: No such file or directory
+[train@node70 Calculator]$ gedit AddTest.java
+[train@node70 Calculator]$ ls
+Addition.java  AddTest.java  App.java
+[train@node70 Calculator]$ git status 
+# On branch master
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	AddTest.java
+#	Addition.java
+nothing added to commit but untracked files present (use "git add" to track)
+[train@node70 Calculator]$ git branch
+* master
+[train@node70 Calculator]$ git fetch Addition -r
+error: unknown switch `r'
+usage: git fetch [<options>] [<repository> [<refspec>...]]
+   or: git fetch [<options>] <group>
+   or: git fetch --multiple [<options>] [(<repository> | <group>)...]
+   or: git fetch --all [<options>]
+
+    -v, --verbose         be more verbose
+    -q, --quiet           be more quiet
+    --all                 fetch from all remotes
+    -a, --append          append to .git/FETCH_HEAD instead of overwriting
+    --upload-pack <path>  path to upload pack on remote end
+    -f, --force           force overwrite of local branch
+    -m, --multiple        fetch from multiple remotes
+    -t, --tags            fetch all tags and associated objects
+    -n                    do not fetch all tags (--no-tags)
+    -p, --prune           prune remote-tracking branches no longer on remote
+    --recurse-submodules[=<on-demand>]
+                          control recursive fetching of submodules
+    --dry-run             dry run
+    -k, --keep            keep downloaded pack
+    -u, --update-head-ok  allow updating of HEAD ref
+    --progress            force progress reporting
+    --depth <depth>       deepen history of shallow clone
+    --unshallow           convert to a complete repository
+
+[train@node70 Calculator]$ git fetch -all
+error: did you mean `--all` (with two dashes ?)
+[train@node70 Calculator]$ git fetch --all
+Fetching origin
+[train@node70 Calculator]$ git branch 
+* master
+[train@node70 Calculator]$ git fetch --multiple import static org.junit.Assert.assertEquals;
+fatal: No such remote or remote group: import
+[train@node70 Calculator]$ 
+[train@node70 Calculator]$ import org.junit.Test;
+bash: import: command not found...
+[train@node70 Calculator]$ 
+[train@node70 Calculator]$ public class AddTest {
+bash: public: command not found...
+[train@node70 Calculator]$ @Test
+bash: @Test: command not found...
+[train@node70 Calculator]$ public void testSimpleAdddition(){
+bash: syntax error near unexpected token `('
+[train@node70 Calculator]$ Addition addition = new Addition();
+bash: syntax error near unexpected token `('
+[train@node70 Calculator]$ int result = addition.evaluate(10,20); 
+bash: syntax error near unexpected token `('
+[train@node70 Calculator]$ assertEquals(30,result,0.0001);
+bash: syntax error near unexpected token `30,result,0.0001'
+[train@node70 Calculator]$  result = addition.evaluate(40,40); 
+bash: syntax error near unexpected token `('
+[train@node70 Calculator]$ assertEquals(80,result,0.0001);
+bash: syntax error near unexpected token `80,result,0.0001'
+[train@node70 Calculator]$ }
+bash: syntax error near unexpected token `}'
+[train@node70 Calculator]$ 
+[train@node70 Calculator]$ 
+[train@node70 Calculator]$ git fetch --multiple https://github.com/231mayur/Calculator.git
+fatal: No such remote or remote group: https://github.com/231mayur/Calculator.git
+[train@node70 Calculator]$ git branch -r
+  origin/Addition
+  origin/HEAD -> origin/master
+  origin/master
+[train@node70 Calculator]$ git fetch origin Addition
+From https://github.com/231mayur/Calculator
+ * branch            Addition   -> FETCH_HEAD
+[train@node70 Calculator]$ git checkout Addition
+Branch Addition set up to track remote branch Addition from origin.
+Switched to a new branch 'Addition'
+[train@node70 Calculator]$ git branch
+* Addition
+  master
+[train@node70 Calculator]$ git add .
+[train@node70 Calculator]$ git commit -m "Addition.java and AddTest.java added"
+[Addition 61e9566] Addition.java and AddTest.java added
+ 2 files changed, 25 insertions(+)
+ create mode 100644 src/main/java/org/amdocs/lab2/Calculator/AddTest.java
+ create mode 100644 src/main/java/org/amdocs/lab2/Calculator/Addition.java
+[train@node70 Calculator]$ git status 
+# On branch Addition
+# Your branch is ahead of 'origin/Addition' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+nothing to commit, working directory clean
+[train@node70 Calculator]$ git log
+commit 61e9566c41e8a3c84c7c74dd6563e5edff1724d3
+Author: Snehal <snehalphadatare46@gmail.com>
+Date:   Wed Jul 10 14:32:21 2019 +0530
+
+    Addition.java and AddTest.java added
+
+commit 6ff97cbc82994e6576bf3e6620bfa1b0b17b7c74
+Author: suresh <scs.6190@gmail.com>
+Date:   Wed Jul 10 11:42:22 2019 +0530
+
+    maven quick start project
+[train@node70 Calculator]$ git remote add origin https://github.com/231mayur/Calculator.git
+fatal: remote origin already exists.
+[train@node70 Calculator]$ git remote rm origin
+[train@node70 Calculator]$ git remote add origin https://github.com/231mayur/Calculator.git
+[train@node70 Calculator]$ git push origin Addition
+Username for 'https://github.com': 
+Password for 'https://github.com': 
+remote: No anonymous write access.
+fatal: Authentication failed for 'https://github.com/231mayur/Calculator.git/'
+[train@node70 Calculator]$ git push origin Addition
+Username for 'https://github.com': snehalphadatare
+Password for 'https://snehalphadatare@github.com': 
+Counting objects: 19, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (11/11), 973 bytes | 0 bytes/s, done.
+Total 11 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/231mayur/Calculator.git
+   6ff97cb..61e9566  Addition -> Addition
+[train@node70 Calculator]$ 
+
